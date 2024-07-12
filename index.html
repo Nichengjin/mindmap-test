@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindmap Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <!-- <h1>Mindmap Generator</h1> -->
+        <form id="mindmapForm">
+            <label for="knowledgePoint">Input Knowledge Point:</label>
+            <input type="text" id="knowledgePoint" name="knowledgePoint" required>
+            <button type="submit">Generate Mindmap</button>
+        </form>
+
+        <div id="mindmap">
+            <!-- Display generated mindmap here -->
+        </div>
+        <div id="sidebar">
+            <div class="sidebar-content">
+                <h2>Indago Mindmap</h2>
+                <input type="text" id="knowledgePoint" placeholder="Enter knowledge point...">
+                <button id="generateMindmap">Generate Mindmap</button>
+            </div>
+        </div>
+        <div id="contextMenu">
+            <!-- <button id="expandNode">Expand this node</button> -->
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

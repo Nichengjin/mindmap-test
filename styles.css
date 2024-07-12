@@ -1,0 +1,405 @@
+:root {
+  --primary-color: #333;
+  --secondary-color: #555;
+  --text-color: #fff;
+  --bg-transparent: rgba(255, 255, 255, 0.2);
+  --shadow-color: rgba(31, 38, 135, 0.37);
+  --transition-speed: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  max-width: 800px;
+  width: 90%;
+  padding: 2rem;
+  background: var(--bg-transparent);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform var(--transition-speed) ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+h1 {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 500;
+  flex: 1 0 100%;
+  text-align: center;
+}
+
+input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  background: var(--bg-transparent);
+  color: var(--text-color);
+  backdrop-filter: blur(5px);
+  transition: box-shadow var(--transition-speed) ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+  background: rgba(216,216,216,0.40);
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+
+button:hover {
+  background: rgba(85, 85, 85, 0.5);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+button:active::after {
+  animation: ripple 0.6s ease-out;
+}
+
+#mindmap {
+  width: 100%;
+  height: 500px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  backdrop-filter: blur(8px);
+  background: var(--bg-transparent);
+  transition: all var(--transition-speed) ease;
+}
+
+#mindmap:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px 0 var(--shadow-color);
+}
+
+#contextMenu {
+  display: none;
+  position: absolute;
+  background: var(--bg-transparent);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 0.5rem;
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.3s ease-out;
+  transform-origin: top left;
+  z-index: 1000;
+}
+
+#contextMenu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: background var(--transition-speed) ease;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0.46;
+background: rgba(0,0,0,0.10);
+box-shadow: 0 2px 50px 15px rgba(0,0,0,0.25);
+border-radius: 42px;
+}
+
+#contextMenu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#contextMenu a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+#contextMenu a:active::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ripple {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1); }
+  100% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+}
+
+@media (max-width: 600px) {
+  form {
+    flex-direction: column;
+  }
+  
+  input[type="text"], button {
+    width: 100%;
+  }
+}
+
+#info-card {
+  position: fixed;
+  right: -400px;
+  top: 50%;
+  transform: translateY(-50%) translateX(100%);
+  width: 350px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  overflow: hidden;
+  opacity: 0;
+}
+
+#info-card.visible {
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+}
+
+.vis-network .vis-node {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.vis-network .vis-node:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.vis-network .vis-node.active {
+  background-color: rgba(255, 255, 0, 0.8) !important;
+  box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.vis-network .vis-node.active {
+  animation: pulse 2s infinite;
+}
+
+#contextMenu {
+  display: none;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 2px;
+  padding: 8px 0;
+  min-width: 200px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+  font-family: 'Poppins', sans-serif;
+  z-index: 1000;
+  
+}
+
+#contextMenu button {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 2px;
+}
+
+#contextMenu button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#contextMenu button:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#contextMenu hr {
+  border: none;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 8px 0;
+}
+
+/* Optional: Add a subtle animation when the menu appears */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#contextMenu.visible {
+  display: block;
+  animation: fadeIn 0.2s ease-out;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+  height: 100vh;
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+#mindmap {
+  width: 100%;
+  height: 95vh;
+  border: none;
+  border-radius: 0;
+}
+
+#sidebar {
+  position: fixed;
+  right: -300px; /* Start off-screen */
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  transition: right 0.3s ease-out;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  /* transition: right 0.3s ease-out;
+  right: -300px; */
+}
+
+.sidebar-content {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+#sidebar.active {
+  right: 0;
+}
+
+#sidebar.active .sidebar-content {
+  opacity: 1;
+}
+
+#sidebar h2 {
+  margin-bottom: 20px;
+}
+
+#sidebar input, #sidebar button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+#sidebar button {
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#sidebar button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
